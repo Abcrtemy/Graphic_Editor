@@ -1,6 +1,6 @@
 #include "grobject.h"
 
-GrObject::GrObject()
+GrObject::GrObject(Frame *frame)
 {
 
 }

@@ -17,8 +17,8 @@ class Figure : public GrObject
 public:
 //    Figure();
     virtual void draw(Painter* painter);
-    virtual void changeLine(QColor newColor, int with, Qt::PenStyle style);
-    virtual void changeFill(QColor newColor);
+    virtual void changeProps(SetOfProps * propsSet, Painter *painter);
+//    virtual void changeFill(QColor newColor);
 //    virtual void Line();
 //    virtual void Rectangle();
 //    PropList <LineSetOfProps> *props;
@@ -36,8 +36,8 @@ class Line : public Figure
 public:
     Line(int x1, int y1, int x2, int y2);
     void draw(Painter* painter) override;
-    void changeLine(QColor newColor, int with, Qt::PenStyle style) override;
-    void changeFill(QColor newColor) override;
+    void changeProps(SetOfProps * propsSet, Painter *painter) override;
+//    void changeFill(QColor newColor) override;
 private:
     PropList *props;
     Frame *frame;
@@ -52,8 +52,8 @@ class Rectangle : public Figure
 public:
     Rectangle(int x1, int y1, int x2, int y2);
     void draw(Painter* painter) override;
-    void changeLine(QColor newColor, int with, Qt::PenStyle style) override;
-    void changeFill(QColor newColor) override;
+    void changeProps(SetOfProps * propsSet, Painter *painter) override;
+//    void changeFill(QColor newColor) override;
 private:
     PropList *props;
     Frame *frame;

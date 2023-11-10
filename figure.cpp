@@ -5,28 +5,28 @@
 void Figure::draw(Painter* painter){
 
 }
-void Figure::changeLine(QColor newColor, int with, Qt::PenStyle style){
+void Figure::changeProps(SetOfProps * propsSet, Painter *painter){
 
 }
-void Figure::changeFill(QColor newColor){
+//void Figure::changeFill(QColor newColor){
 
-}
+//}
 Line::Line(int x1, int y1, int x2, int y2){
     props = new PropList;
     frame = new Frame(x1,y1,x2,y2);
 }
 
 void Line::draw(Painter* painter) {
-    painter->changeLineProps(props);
+//    painter->changeLineProps(props);
     painter->drawLine(frame->x1,frame->y1,frame->x2,frame->y2);
 }
 
-void Line::changeLine(QColor newColor, int with, Qt::PenStyle style){
-    props->changeLinePropsSet(newColor, with, style);
+void Line::changeProps(SetOfProps * propsSet, Painter *painter){
+    props->addSet(propsSet,painter);
 }
-void Line::changeFill(QColor newColor){
-    props->changeFillPropsSet(newColor);
-}
+//void Line::changeFill(QColor newColor){
+//    props->changeFillPropsSet(newColor);
+//}
 
 
 Rectangle::Rectangle(int x1, int y1, int x2, int y2){
@@ -35,15 +35,15 @@ Rectangle::Rectangle(int x1, int y1, int x2, int y2){
 }
 
 void Rectangle::draw(Painter* painter) {
-    painter->changeRectProps(props);
+//    painter->changeRectProps(props);
     painter->drawRectangle(frame->x1,frame->y1,frame->x2,frame->y2);
 }
 
-void Rectangle::changeFill(QColor newColor){
-    props->changeFillPropsSet(newColor);
-}
-void Rectangle::changeLine(QColor newColor, int with, Qt::PenStyle style){
-    props->changeLinePropsSet(newColor, with, style);
+//void Rectangle::changeFill(QColor newColor){
+//    props->changeFillPropsSet(newColor);
+//}
+void Rectangle::changeProps(SetOfProps * propsSet, Painter *painter){
+    props->addSet(propsSet,painter);
 }
 
 

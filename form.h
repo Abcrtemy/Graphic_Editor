@@ -5,6 +5,7 @@
 #include "painter.h"
 #include "figure.h"
 #include "group.h"
+#include "setofprops.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Form; }

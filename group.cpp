@@ -1,12 +1,14 @@
 #include "group.h"
 #include "qdebug.h"
+#include "frame.h"
 
 
-Group::Group()
-{
-//    group = new QVector<Figure*>();
-    gr = new QList<GrObject*>;
-}
+//Group::Group()
+//{
+////    group = new QVector<Figure*>();
+
+//    gr = new QList<GrObject*>;
+//}
 
 void Group::addToGroup(GrObject* obj){
     gr->append(obj);

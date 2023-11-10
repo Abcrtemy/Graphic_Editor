@@ -10,7 +10,7 @@
 class Group : public GrObject
 {
 public:
-    Group();
+//    Group();
     void addToGroup(GrObject *obj);
     void draw(Painter * painter);
     QList <GrObject *> *gr;

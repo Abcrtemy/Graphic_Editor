@@ -15,7 +15,7 @@
 class Figure : public GrObject
 {
 public:
-//    Figure();
+    Figure(Frame *frame);
     virtual void draw(Painter* painter);
     virtual void changeProps(SetOfProps * propsSet, Painter *painter);
 //    virtual void changeFill(QColor newColor);
@@ -34,7 +34,7 @@ private:
 class Line : public Figure
 {
 public:
-    Line(int x1, int y1, int x2, int y2);
+    Line(Frame *frame1);
     void draw(Painter* painter) override;
     void changeProps(SetOfProps * propsSet, Painter *painter) override;
 //    void changeFill(QColor newColor) override;
@@ -50,7 +50,7 @@ private:
 class Rectangle : public Figure
 {
 public:
-    Rectangle(int x1, int y1, int x2, int y2);
+    Rectangle(Frame *frame1);
     void draw(Painter* painter) override;
     void changeProps(SetOfProps * propsSet, Painter *painter) override;
 //    void changeFill(QColor newColor) override;

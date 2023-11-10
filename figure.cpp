@@ -1,6 +1,9 @@
 #include "figure.h"
 
 
+Figure::Figure(Frame * frame1): GrObject(frame1){
+
+}
 
 void Figure::draw(Painter* painter){
 
@@ -11,9 +14,9 @@ void Figure::changeProps(SetOfProps * propsSet, Painter *painter){
 //void Figure::changeFill(QColor newColor){
 
 //}
-Line::Line(int x1, int y1, int x2, int y2){
+Line::Line(Frame *frame1):Figure(frame1) {
     props = new PropList;
-    frame = new Frame(x1,y1,x2,y2);
+    frame = frame1;
 }
 
 void Line::draw(Painter* painter) {
@@ -29,9 +32,9 @@ void Line::changeProps(SetOfProps * propsSet, Painter *painter){
 //}
 
 
-Rectangle::Rectangle(int x1, int y1, int x2, int y2){
+Rectangle::Rectangle(Frame *frame1): Figure(frame1){
     props = new PropList;
-    frame = new Frame(x1,y1,x2,y2);
+    frame = frame1;
 }
 
 void Rectangle::draw(Painter* painter) {

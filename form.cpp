@@ -20,8 +20,10 @@ void Form::on_pushButton_clicked()
 {
     SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
     SetOfProps* props1 = new FillSetOfProps(Qt::red);
-    Figure* line = new Line(0,100,-100,200);
-    Figure* rect = new Rectangle(100,100,-100,200);
+    Frame *frame = new Frame(0,100,-100,200);
+    Frame *frame1 = new Frame(100,100,-100,200);
+    Figure* line = new Line(frame);
+    Figure* rect = new Rectangle(frame1);
     rect->changeProps(props1, newPainter);
     rect->changeProps(props0, newPainter);
     line->changeProps(props0,newPainter);
@@ -38,6 +40,12 @@ void Form::on_pushButton_clicked()
 
 void Form::on_pushButton_2_clicked()
 {
+    SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
+    Frame *frame = new Frame(100,100,200,200);
+    Figure* line = new Line(frame);
+    line->changeProps(props0,newPainter);
+    line->draw(newPainter);
+//    rect->draw(newPainter);
 //    Figure* rect1 = new Rectangle(100,0,100,100);
 //    rect1->changeFill(Qt::green);
 //    rect1->changeLine(Qt::white,6,Qt::DotLine);
@@ -59,6 +67,22 @@ void Form::on_pushButton_2_clicked()
 
 void Form::on_pushButton_3_clicked()
 {
+
+    SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
+    Frame *frame = new Frame(200,200,100,300);
+    Frame *frame1 = new Frame(-100,200,0,300);
+    Figure* line = new Line(frame);
+    Figure* line1 = new Line(frame1);
+    Group *gr1 = new Group(frame);
+    Group *gr2 = new Group(frame);
+    line->changeProps(props0,newPainter);
+    gr1->addToGroup(line);
+    gr2->addToGroup(gr1);
+    gr2->addToGroup(line1);
+    gr2->draw(newPainter);
+
+
+//    line->draw(newPainter);
 //    Group* group = new Group;
 //    Group* group1 = new Group;
 //    Figure* line1 = new Line(300,100,400,200);

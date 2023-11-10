@@ -3,12 +3,12 @@
 #include "frame.h"
 
 
-//Group::Group()
-//{
-////    group = new QVector<Figure*>();
+Group::Group(Frame *frame) : GrObject(frame)
+{
+//    group = new QVector<Figure*>();
 
-//    gr = new QList<GrObject*>;
-//}
+    gr = new QList<GrObject*>;
+}
 
 void Group::addToGroup(GrObject* obj){
     gr->append(obj);

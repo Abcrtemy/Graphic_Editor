@@ -7,7 +7,7 @@
 class GrObject
 {
 public:
-    GrObject(Frame *frame);
+    GrObject();
     virtual void draw(Painter* painter);
 };
 

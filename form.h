@@ -7,6 +7,7 @@
 #include "group.h"
 #include "setofprops.h"
 #include "frame.h"
+#include "proplist.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Form; }
@@ -30,6 +31,8 @@ private slots:
 private:
     Ui::Form *ui;
     Painter *newPainter;
+    QGraphicsScene *scene;
+
 //    Figure *line;
 };
 #endif // FORM_H

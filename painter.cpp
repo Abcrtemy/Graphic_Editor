@@ -1,12 +1,12 @@
 #include "painter.h"
 #include "qdebug.h"
 
-Painter::Painter(QObject *parent) : QGraphicsScene(parent)
+Painter::Painter(QGraphicsScene *newScene)
 {
-    shapes = new QGraphicsItemGroup();
+//    shapes = new QGraphicsItemGroup();
     pen = *new QPen();
     brush = *new QBrush();
-//    scene = new QGraphicsScene;
+    scene = newScene;
 
 }
 
@@ -46,7 +46,7 @@ Painter::Painter(QObject *parent) : QGraphicsScene(parent)
 void Painter::drawLine(int x1, int y1, int x2, int y2){
 //    QPen penBlack(Qt::black);
 //    shapes->addToGroup(addLine(0, 0, 20, 20, penBlack));
-    addLine(x1, y1, x2, y2, pen);
+    scene->addLine(x1, y1, x2, y2, pen);
 //    scene->addLine(20,20,width() - 20, 20, penBlack);
 }
 
@@ -54,7 +54,7 @@ void Painter::drawLine(int x1, int y1, int x2, int y2){
 void Painter::drawRectangle(int x1, int y1, int x2, int y2){
 //    QPen penBlack(Qt::black);
 //    qDebug() << brush.color();
-    addRect(x1, y1, x2, y2, pen,brush);
+    scene->addRect(x1, y1, x2, y2, pen,brush);
 
 }
 

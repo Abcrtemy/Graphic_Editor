@@ -14,8 +14,8 @@ void Figure::changeProps(SetOfProps * propsSet, Painter *painter){
 //void Figure::changeFill(QColor newColor){
 
 //}
-Line::Line(Frame *frame1):Figure(frame1) {
-    props = new PropList;
+Line::Line(Frame *frame1, PropList *newProps):Figure(frame1) {
+    props = newProps;
     frame = frame1;
 }
 
@@ -32,8 +32,8 @@ void Line::changeProps(SetOfProps * propsSet, Painter *painter){
 //}
 
 
-Rectangle::Rectangle(Frame *frame1): Figure(frame1){
-    props = new PropList;
+Rectangle::Rectangle(Frame *frame1, PropList *newProps): Figure(frame1){
+    props = newProps;
     frame = frame1;
 }
 

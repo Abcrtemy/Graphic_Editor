@@ -34,7 +34,7 @@ private:
 class Line : public Figure
 {
 public:
-    Line(Frame *frame1);
+    Line(Frame *frame1, PropList *newProps);
     void draw(Painter* painter) override;
     void changeProps(SetOfProps * propsSet, Painter *painter) override;
 //    void changeFill(QColor newColor) override;
@@ -50,7 +50,7 @@ private:
 class Rectangle : public Figure
 {
 public:
-    Rectangle(Frame *frame1);
+    Rectangle(Frame *frame1, PropList *newProps);
     void draw(Painter* painter) override;
     void changeProps(SetOfProps * propsSet, Painter *painter) override;
 //    void changeFill(QColor newColor) override;

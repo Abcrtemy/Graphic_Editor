@@ -6,8 +6,9 @@ Form::Form(QWidget *parent)
     , ui(new Ui::Form)
 {
     ui->setupUi(this);
-    newPainter = new Painter();
-    ui->graphicsView->setScene(newPainter);
+    scene = new QGraphicsScene();
+    newPainter = new Painter(scene);
+    ui->graphicsView->setScene(scene);
 }
 
 Form::~Form()
@@ -20,13 +21,20 @@ void Form::on_pushButton_clicked()
 {
     SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
     SetOfProps* props1 = new FillSetOfProps(Qt::red);
+
+    PropList *propList0 = new PropList();
+    PropList *propList1 = new PropList();
+
     Frame *frame = new Frame(0,100,-100,200);
     Frame *frame1 = new Frame(100,100,-100,200);
-    Figure* line = new Line(frame);
-    Figure* rect = new Rectangle(frame1);
-    rect->changeProps(props1, newPainter);
+
+    Figure* line = new Line(frame,propList0);
+    Figure* rect = new Rectangle(frame1, propList1);
+
     rect->changeProps(props0, newPainter);
+    rect->changeProps(props1, newPainter);
     line->changeProps(props0,newPainter);
+
     line->draw(newPainter);
     rect->draw(newPainter);
 //    Figure* line3 = new Line(0,0,-100,-100);
@@ -41,10 +49,16 @@ void Form::on_pushButton_clicked()
 void Form::on_pushButton_2_clicked()
 {
     SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
+
+    PropList *propList0 = new PropList();
+
     Frame *frame = new Frame(100,100,200,200);
-    Figure* line = new Line(frame);
+
+    Figure* line = new Line(frame, propList0);
+
     line->changeProps(props0,newPainter);
     line->draw(newPainter);
+
 //    rect->draw(newPainter);
 //    Figure* rect1 = new Rectangle(100,0,100,100);
 //    rect1->changeFill(Qt::green);
@@ -69,12 +83,19 @@ void Form::on_pushButton_3_clicked()
 {
 
     SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
+
     Frame *frame = new Frame(200,200,100,300);
     Frame *frame1 = new Frame(-100,200,0,300);
-    Figure* line = new Line(frame);
-    Figure* line1 = new Line(frame1);
+
+    PropList *propList0 = new PropList();
+    PropList *propList1 = new PropList();
+
+    Figure* line = new Line(frame, propList0);
+    Figure* line1 = new Line(frame1, propList1);
+
     Group *gr1 = new Group(frame);
     Group *gr2 = new Group(frame);
+
     line->changeProps(props0,newPainter);
     gr1->addToGroup(line);
     gr2->addToGroup(gr1);

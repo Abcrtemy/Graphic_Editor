@@ -2,12 +2,12 @@
 #define FORM_H
 
 #include <QMainWindow>
-#include "painter.h"
-#include "figure.h"
-#include "group.h"
-#include "setofprops.h"
-#include "frame.h"
-#include "proplist.h"
+#include "../Model/painter.h"
+#include "../Model/figure.h"
+#include "../Model/group.h"
+#include "../Model/setofprops.h"
+#include "../Model/frame.h"
+#include "../Model/proplist.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Form; }

@@ -1,4 +1,4 @@
-#include "form.h"
+#include "View/form.h"
 
 #include <QApplication>
 

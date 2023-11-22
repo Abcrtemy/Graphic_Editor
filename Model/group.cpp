@@ -30,17 +30,18 @@ void Group::draw(Painter * painter){
 //    int l = gr->length();
     for (int i = 0; i < gr->length(); i++){
         GrObject* object = gr->value(i);
-        if (dynamic_cast<Rectangle*>(object)){
-            Rectangle* rect = dynamic_cast<Rectangle*>(object);
-            rect->draw(painter);
-        }
-        else if (dynamic_cast<Group*>(object)){
-            Group* grope = dynamic_cast<Group*>(object);
-            grope->draw(painter);
-        }
-        else{
-            Line* line = dynamic_cast<Line*>(object);
-            line->draw(painter);
-        }
+        object->draw(painter);
+//        if (dynamic_cast<Rectangle*>(object)){
+//            Rectangle* rect = dynamic_cast<Rectangle*>(object);
+//            rect->draw(painter);
+//        }
+//        else if (dynamic_cast<Group*>(object)){
+//            Group* grope = dynamic_cast<Group*>(object);
+//            grope->draw(painter);
+//        }
+//        else{
+//            Line* line = dynamic_cast<Line*>(object);
+//            line->draw(painter);
+//        }
     }
 }

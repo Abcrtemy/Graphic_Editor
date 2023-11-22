@@ -8,6 +8,8 @@
 #include "../Model/setofprops.h"
 #include "../Model/frame.h"
 #include "../Model/proplist.h"
+#include "../Model/model.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Form; }

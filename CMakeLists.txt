@@ -14,22 +14,23 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        form.cpp
-        form.h
-        form.ui
+        View/form.cpp
+        View/form.h
+        View/form.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Graphics_editor
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        painter.h painter.cpp
-        figure.h figure.cpp
-        proplist.h proplist.cpp
-        setofprops.h setofprops.cpp
-        frame.h frame.cpp
-        group.h group.cpp
-        grobject.h grobject.cpp
+        Model/painter.h Model/painter.cpp
+        Model/figure.h Model/figure.cpp
+        Model/proplist.h Model/proplist.cpp
+        Model/setofprops.h Model/setofprops.cpp
+        Model/frame.h Model/frame.cpp
+        Model/group.h Model/group.cpp
+        Model/grobject.h Model/grobject.cpp
+        Controller/controller.h Controller/controller.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Graphics_editor APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

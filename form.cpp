@@ -7,7 +7,8 @@ Form::Form(QWidget *parent)
 {
     ui->setupUi(this);
     scene = new QGraphicsScene();
-    newPainter = new Painter(scene);
+    newPainter = new Painter();
+    newPainter->setPort(scene);
     ui->graphicsView->setScene(scene);
 }
 

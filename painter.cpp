@@ -1,13 +1,16 @@
 #include "painter.h"
 #include "qdebug.h"
 
-Painter::Painter(QGraphicsScene *newScene)
+Painter::Painter()
 {
 //    shapes = new QGraphicsItemGroup();
     pen = *new QPen();
     brush = *new QBrush();
-    scene = newScene;
 
+}
+
+void Painter::setPort(QGraphicsScene *newScene){
+    scene = newScene;
 }
 
 //void Painter::changeLineProps(PropList* props){

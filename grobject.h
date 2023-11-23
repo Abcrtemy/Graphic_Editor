@@ -8,7 +8,9 @@ class GrObject
 {
 public:
     GrObject(Frame *frame);
-    virtual void draw(Painter* painter);
+    virtual void draw(Painter* painter) = 0;
+protected:
+    Frame *frame;
 };
 
 #endif // GROBJECT_H

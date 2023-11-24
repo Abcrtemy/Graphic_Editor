@@ -10,9 +10,9 @@ PropList::PropList()
 
 }
 
-void PropList::addSet(SetOfProps *propset, Painter* painter){
+void PropList::addSet(SetOfProps *propset){
     this->push_back(propset);
-    applySets(painter);
+//    applySets(painter);
 }
 void PropList::applySets(Painter * painter){
     for (int i = 0; i <this->length(); i++) {

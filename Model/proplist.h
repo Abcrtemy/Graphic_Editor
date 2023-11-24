@@ -15,7 +15,7 @@ public:
     PropList();
 //    void changeLinePropsSet(QColor newLineColor, int with, Qt::PenStyle style);
 //    void changeFillPropsSet(QColor newFillColor);
-    void addSet(SetOfProps *propset, Painter *painter);
+    void addSet(SetOfProps *propset);
     void applySets(Painter *painter);
 private:
 //    SetOfProps* linePropsSet;

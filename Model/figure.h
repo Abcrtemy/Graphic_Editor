@@ -17,7 +17,7 @@ class Figure : public GrObject
 public:
     Figure(Frame *frame, PropList *newProps);
     void draw(Painter* painter) override;
-    virtual void changeProps(SetOfProps * propsSet, Painter *painter);
+    virtual void changeProps(SetOfProps * propsSet);
 protected:
     PropList *props;
     virtual void drawGeometry(Painter *painter) = 0;
@@ -30,7 +30,7 @@ class Line : public Figure
 public:
     Line(Frame *frame1, PropList *newProps);
     void drawGeometry(Painter* painter) override;
-    void changeProps(SetOfProps * propsSet, Painter *painter) override;
+    void changeProps(SetOfProps * propsSet) override;
 };
 
 
@@ -41,7 +41,7 @@ class Rectangle : public Figure
 public:
     Rectangle(Frame *frame1, PropList *newProps);
     void drawGeometry(Painter* painter) override;
-    void changeProps(SetOfProps * propsSet, Painter *painter) override;
+    void changeProps(SetOfProps * propsSet) override;
 };
 
 

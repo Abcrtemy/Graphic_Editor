@@ -109,25 +109,25 @@ void Form::on_pushButton_2_clicked()
 void Form::on_pushButton_3_clicked()
 {
 
-    SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
+//    SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
 
-    Frame *frame = new Frame(200,200,100,300);
-    Frame *frame1 = new Frame(-100,200,0,300);
+//    Frame *frame = new Frame(200,200,100,300);
+//    Frame *frame1 = new Frame(-100,200,0,300);
 
-    PropList *propList0 = new PropList();
-    PropList *propList1 = new PropList();
+//    PropList *propList0 = new PropList();
+//    PropList *propList1 = new PropList();
 
-    Figure* line = new Line(frame, propList0);
-    Figure* line1 = new Line(frame1, propList1);
+//    Figure* line = new Line(frame, propList0);
+//    Figure* line1 = new Line(frame1, propList1);
 
-    Group *gr1 = new Group(frame);
-    Group *gr2 = new Group(frame);
+//    Group *gr1 = new Group(frame);
+//    Group *gr2 = new Group(frame);
 
-    line->changeProps(props0,newPainter);
-    gr1->addToGroup(line);
-    gr2->addToGroup(gr1);
-    gr2->addToGroup(line1);
-    gr2->draw(newPainter);
+//    line->changeProps(props0,newPainter);
+//    gr1->addToGroup(line);
+//    gr2->addToGroup(gr1);
+//    gr2->addToGroup(line1);
+//    gr2->draw(newPainter);
 
 
 //    line->draw(newPainter);

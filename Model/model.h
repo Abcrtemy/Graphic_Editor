@@ -5,16 +5,28 @@
 #include "factory.h"
 #include "objectstore.h"
 #include "painter.h"
+#include "paintcontroller.h"
 
-class Model
+class IModel{
+public:
+    virtual IFactory* getFactory() = 0;
+    virtual IPaintController* getPaintController() = 0;
+};
+
+
+class Model : public IModel
 {
 public:
     Model();
-    void testDraw();
+//    void testDraw();
+    IFactory* getFactory() override;
+    IPaintController* getPaintController() override;
+
 private:
     Scene *scene;
-    Factory *factory;
+    IFactory *factory;
     ObjectStore *objectStore;
+    IPaintController *paintController;
     Painter *painter;
 };
 

@@ -36,6 +36,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Model/objectstore.h Model/objectstore.cpp
         Model/scene.h Model/scene.cpp
         Model/paintcontroller.h Model/paintcontroller.cpp
+        Controller/action.h Controller/action.cpp
+        View/graphicsscene.h View/graphicsscene.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Graphics_editor APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

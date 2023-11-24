@@ -2,6 +2,9 @@
 #define FORM_H
 
 #include <QMainWindow>
+#include <QMouseEvent>
+#include <QGraphicsSceneEvent>
+#include "graphicsscene.h"
 #include "../Model/painter.h"
 #include "../Model/figure.h"
 #include "../Model/group.h"
@@ -10,6 +13,10 @@
 #include "../Model/proplist.h"
 #include "../Model/model.h"
 
+#include "../Model/factory.h"
+#include "../Model/paintcontroller.h"
+#include "../Controller/controller.h"
+#include "../Controller/action.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Form; }
@@ -30,10 +37,22 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void onLeftButtonPressed(int x, int y);
+
+
+
+
 private:
     Ui::Form *ui;
     Painter *newPainter;
-    QGraphicsScene *scene;
+    GraphicsScene *scene;
+    IController *controller;
+    IAction *action;
+    IModel *model;
+    IPaintController *paintController;
+    IFactory *factory;
+
+
 
 //    Figure *line;
 };

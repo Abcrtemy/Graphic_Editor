@@ -9,6 +9,7 @@ Painter::Painter()
 }
 void Painter::setPort(QGraphicsScene *newScene){
         scene = newScene;
+    pen.setColor(Qt::white);
 }
 //void Painter::changeLineProps(PropList* props){
 //    pen.setColor(QColorConstants::Black);

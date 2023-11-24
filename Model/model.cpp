@@ -8,10 +8,21 @@ Model::Model()
     factory = new Factory(objectStore);
     painter = new Painter();
     scene = new Scene(objectStore, painter);
-    testDraw();
+    paintController = new PaintController(scene, painter);
+//    paintController->SetPort(port);
+//    testDraw();
+    paintController->Refresh();
 }
 
-void Model::testDraw(){
-    factory->createItem();
-    scene->repaint();
+//void Model::testDraw(){
+////    factory->createItem();
+////    factory->createItem();
+////    scene->repaint();
+//}
+
+IFactory* Model::getFactory(){
+    return factory;
+}
+IPaintController* Model::getPaintController(){
+    return paintController;
 }

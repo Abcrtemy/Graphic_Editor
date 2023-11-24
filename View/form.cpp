@@ -6,10 +6,27 @@ Form::Form(QWidget *parent)
     , ui(new Ui::Form)
 {
     ui->setupUi(this);
-    scene = new QGraphicsScene();
+    scene = new GraphicsScene();
     newPainter = new Painter();
+    scene->setSceneRect(0,0,776,510);
     newPainter->setPort(scene);
     ui->graphicsView->setScene(scene);
+    model = new Model();
+    controller = new Controller(model);
+
+
+//    connect(this, &Form::mousePressEvent, this, &Form::onMousePressed);
+
+    connect(scene, &GraphicsScene::leftButtonPressed, this, &Form::onLeftButtonPressed);
+
+
+    paintController = controller->getPaintController();
+    paintController->SetPort(scene);
+
+    action = controller->getAction();
+
+    factory = model->getFactory();
+
 
 }
 
@@ -21,8 +38,11 @@ Form::~Form()
 
 void Form::on_pushButton_clicked()
 {
+    action->setCreateObjectType(CreateObjectType::LineType);
+//    action->mouseUp();
+//    paintController->Refresh();
 
-    Model *model = new Model();
+//    Model *model = new Model(scene);
 //    SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
 //    SetOfProps* props1 = new FillSetOfProps(Qt::red);
 
@@ -52,16 +72,19 @@ void Form::on_pushButton_clicked()
 
 void Form::on_pushButton_2_clicked()
 {
-    SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
+    action->setCreateObjectType(CreateObjectType::RectangleType);
 
-    PropList *propList0 = new PropList();
 
-    Frame *frame = new Frame(100,100,200,200);
+//    SetOfProps* props0 = new LineSetOfProps(Qt::white, Qt::DotLine, 5);
 
-    Figure* line = new Line(frame, propList0);
+//    PropList *propList0 = new PropList();
 
-    line->changeProps(props0,newPainter);
-    line->draw(newPainter);
+//    Frame *frame = new Frame(100,100,200,200);
+
+//    Figure* line = new Line(frame, propList0);
+
+//    line->changeProps(props0,newPainter);
+//    line->draw(newPainter);
 
 //    rect->draw(newPainter);
 //    Figure* rect1 = new Rectangle(100,0,100,100);
@@ -124,3 +147,9 @@ void Form::on_pushButton_3_clicked()
 
 }
 
+
+void Form::onLeftButtonPressed(int x, int y){
+    action->mouseUp(x, y);
+    paintController->Refresh();
+//    qDebug() << x;
+}

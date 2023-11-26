@@ -16,9 +16,9 @@ class Action : public IAction
 {
 public:
     Action(IModel *newModel);
-    CreateObjectType getCreatedObjectType();
-    void setCreateObjectType(CreateObjectType objectType);
-    void mouseUp(int x, int y);
+    CreateObjectType getCreatedObjectType() override;
+    void setCreateObjectType(CreateObjectType objectType) override;
+    void mouseUp(int x, int y) override;
 private:
     IModel *model;
     IFactory *factory;

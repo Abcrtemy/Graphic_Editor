@@ -22,8 +22,8 @@ void Factory::createItem(int x, int y){
         figure->changeProps(lineProp);
         store->append(figure);
     }
-//    Frame *frame = new Frame(x,y,x+100,y+100);
-//    Figure* figure = new Line(frame, propList);
+    Frame *frame = new Frame(x,y,x+100,y+100);
+    Figure* figure = new Line (frame, propList);
 
 
 }

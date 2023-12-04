@@ -17,6 +17,7 @@
 #include "../Model/paintcontroller.h"
 #include "../Controller/controller.h"
 #include "../Controller/action.h"
+#include "../Controller/statecollection.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Form; }
@@ -38,6 +39,7 @@ private slots:
     void on_pushButton_3_clicked();
 
     void onLeftButtonPressed(int x, int y);
+    void LeftButtonReleased(int x, int y);
 
 
 
@@ -48,6 +50,7 @@ private:
     GraphicsScene *scene;
     IController *controller;
     IAction *action;
+    StateCollection *collecton;
     IModel *model;
     IPaintController *paintController;
     IFactory *factory;

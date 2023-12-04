@@ -8,6 +8,8 @@
 #include "grobject.h"
 
 #include <QColor>
+#include <stdlib.h>
+#include <stdio.h>
 
 
 //#include <QObject>
@@ -18,6 +20,7 @@ public:
     Figure(Frame *frame, PropList *newProps);
     void draw(Painter* painter) override;
     virtual void changeProps(SetOfProps * propsSet);
+
 protected:
     PropList *props;
     virtual void drawGeometry(Painter *painter) = 0;
@@ -31,6 +34,7 @@ public:
     Line(Frame *frame1, PropList *newProps);
     void drawGeometry(Painter* painter) override;
     void changeProps(SetOfProps * propsSet) override;
+    bool inBody(int x, int y) override;
 };
 
 
@@ -42,6 +46,7 @@ public:
     Rectangle(Frame *frame1, PropList *newProps);
     void drawGeometry(Painter* painter) override;
     void changeProps(SetOfProps * propsSet) override;
+    bool inBody(int x, int y) override;
 };
 
 

@@ -11,8 +11,14 @@ class GraphicsScene : public QGraphicsScene
 public:
     GraphicsScene();
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+    void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 signals:
     void leftButtonPressed(int x, int y);
+    void leftButtonReleased(int x, int y);
+    void MsMoved(int x, int y);
+//    void leftButton(int x, int y);
+//    void leftButtonPressed(int x, int y);
 protected:
 
 

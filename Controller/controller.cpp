@@ -4,6 +4,7 @@ Controller::Controller(IModel* newModel)
 {
     model = newModel;
     action = new Action(model);
+    stateCollection = new StateCollection(action);
 }
 
 void Controller::setModel(IModel* newModel){
@@ -15,4 +16,8 @@ IPaintController* Controller::getPaintController(){
 }
 IAction* Controller::getAction(){
     return action;
+}
+
+StateCollection* Controller::getCollection(){
+    return stateCollection;
 }

@@ -6,7 +6,7 @@
 #include "frame.h"
 #include "objectstore.h"
 #include "setofprops.h"
-
+#include "Selection/selectiondealler.h"
 
 enum CreateObjectType {
     LineType, RectangleType
@@ -16,6 +16,7 @@ enum CreateObjectType {
 class IFactory{
 public:
     virtual void createItem (int x, int y) = 0;
+    virtual void createAndGrabItem (int x, int y) = 0;
     virtual CreateObjectType getType() = 0;
     virtual void setType(CreateObjectType objectType) = 0;
 };
@@ -23,14 +24,17 @@ public:
 class Factory : public IFactory
 {
 public:
-    Factory(ObjectStore *newStore);
+    Factory(ObjectStore *newStore, ISelectionDealler *dealer);
     void createItem (int x, int y) override;
+    void createAndGrabItem (int x, int y) override;
     CreateObjectType getType() override;
     void setType(CreateObjectType objectType) override;
 
 private:
     CreateObjectType createObjectType;
     ObjectStore *store;
+    ISelectionDealler *selectionDealer;
+    int xx = 100, yy = 100;
 //    SetOfProps *props;
 
 };

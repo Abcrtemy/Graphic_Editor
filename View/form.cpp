@@ -18,12 +18,15 @@ Form::Form(QWidget *parent)
 //    connect(this, &Form::mousePressEvent, this, &Form::onMousePressed);
 
     connect(scene, &GraphicsScene::leftButtonPressed, this, &Form::onLeftButtonPressed);
+    connect(scene, &GraphicsScene::leftButtonReleased, this, &Form::LeftButtonReleased);
 
 
     paintController = controller->getPaintController();
     paintController->SetPort(scene);
 
     action = controller->getAction();
+
+    collecton = controller->getCollection();
 
     factory = model->getFactory();
 
@@ -149,7 +152,14 @@ void Form::on_pushButton_3_clicked()
 
 
 void Form::onLeftButtonPressed(int x, int y){
-    action->mouseUp(x, y);
+    collecton->mouseDown(x, y);
     paintController->Refresh();
 //    qDebug() << x;
+}
+
+
+void Form::LeftButtonReleased(int x, int y){
+    collecton->mouseUp(x, y);
+    paintController->Refresh();
+    //    qDebug() << x;
 }

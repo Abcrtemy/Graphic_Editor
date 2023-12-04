@@ -9,7 +9,8 @@ class GrObject
 public:
     GrObject(Frame *frame);
     virtual void draw(Painter* painter) = 0;
-protected:
+    virtual bool inBody(int x, int y) = 0;
+//protected:
     Frame *frame;
 };
 

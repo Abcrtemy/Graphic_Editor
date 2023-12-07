@@ -4,16 +4,18 @@
 
 #include <QList>
 #include "state.h"
-#include "action.h"
+#include "../Model/model.h"
+//#include "action.h"
 enum NowState {
     drState, crState
 };
 class StateCollection : public QList<State*>
 {
 public:
-    StateCollection(IAction *newAction);
+    StateCollection(IModel *model);
     void mouseUp(int x, int y);
     void mouseDown(int x, int y);
+    void mouseMoove(int x, int y);
 private:
     State *dragState;
     State *createState;

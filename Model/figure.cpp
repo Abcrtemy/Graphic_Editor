@@ -60,7 +60,7 @@ void Rectangle::drawGeometry(Painter* painter) {
     painter->drawRectangle(frame->x1,frame->y1,frame->x2,frame->y2);
 }
 
-void Rectangle::changeProps(SetOfProps * propsSet){
+void Rectangle::changeProps(SetOfProps* propsSet){
 //    props->applySets(painter);
     props->addSet(propsSet);
 }

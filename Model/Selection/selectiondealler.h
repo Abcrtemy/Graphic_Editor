@@ -14,6 +14,7 @@ public:
     virtual void SelectAndGrab(GrObject *object, int x, int y) = 0;
     virtual void tryMoove(int x, int y) = 0;
     virtual void Release() = 0;
+    virtual void Draw(Painter *painter) = 0;
 };
 
 
@@ -24,6 +25,7 @@ public:
     void SelectAndGrab(GrObject *object, int x, int y) override;
     void tryMoove(int x, int y) override;
     void Release() override;
+    virtual void Draw(Painter *painter) override;
 private:
     SelectionStore *selectionStore;
     ObjectStore *objectStore;

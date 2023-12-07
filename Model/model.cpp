@@ -10,7 +10,7 @@ Model::Model()
 
     factory = new Factory(objectStore, selectionDealler);
     painter = new Painter();
-    scene = new Scene(objectStore, painter);
+    scene = new Scene(objectStore, painter,selectionDealler);
     paintController = new PaintController(scene, painter);
 
 //    paintController->SetPort(port);

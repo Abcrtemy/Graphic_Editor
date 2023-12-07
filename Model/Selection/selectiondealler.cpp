@@ -28,3 +28,7 @@ void SelectionDealler::tryMoove(int x, int y){
 void SelectionDealler::Release(){
     selectionStore->Release();
 }
+
+void SelectionDealler::Draw(Painter* painter){
+    selectionStore->draw(painter);
+}

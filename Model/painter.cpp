@@ -59,6 +59,13 @@ void Painter::drawRectangle(int x1, int y1, int x2, int y2){
 
 }
 
+void Painter::drawSelect(int x, int y){
+    QPen selPen = *new QPen();
+    selPen.setColor(Qt::white);
+    scene->addRect(x,y,6,6,selPen);
+}
+
+
 //void Painter::changeRectProps(PropList* props){
 //    pen.setColor(QColorConstants::Black);
 //    pen.setWidth(2);

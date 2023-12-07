@@ -1,6 +1,7 @@
 #ifndef FORM_H
 #define FORM_H
 
+#include <QColorDialog>
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QGraphicsSceneEvent>
@@ -33,16 +34,19 @@ public:
 
 private slots:
     void on_pushButton_clicked();
-
     void on_pushButton_2_clicked();
-
-    void on_pushButton_3_clicked();
-
+//    void on_pushButton_3_clicked();
     void onLeftButtonPressed(int x, int y);
     void LeftButtonReleased(int x, int y);
+    void mouseMoove(int x, int y);
 
+    void on_ChangeType_currentIndexChanged(int index);
 
+    void on_Thickness_valueChanged(int arg1);
 
+    void on_LineColor_clicked();
+
+    void on_FillColor_clicked();
 
 private:
     Ui::Form *ui;
@@ -54,6 +58,8 @@ private:
     IModel *model;
     IPaintController *paintController;
     IFactory *factory;
+    QColor fill;
+    QColor line;
 
 
 

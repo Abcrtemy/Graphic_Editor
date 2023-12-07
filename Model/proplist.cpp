@@ -1,5 +1,5 @@
 #include "proplist.h"
-
+#include "qdebug.h"
 
 //template <class T>
 PropList::PropList()
@@ -12,10 +12,12 @@ PropList::PropList()
 
 void PropList::addSet(SetOfProps *propset){
     this->push_back(propset);
+//    qDebug() << typeid(propset).name();
 //    applySets(painter);
 }
 void PropList::applySets(Painter * painter){
     for (int i = 0; i <this->length(); i++) {
+
         if (dynamic_cast<LineSetOfProps*>(this->value(i))){
             SetOfProps* SetPropsl = this->value(i);
             LineSetOfProps* lineProps = dynamic_cast<LineSetOfProps*>(SetPropsl);

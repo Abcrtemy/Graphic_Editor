@@ -19,8 +19,10 @@ bool SelectionStore::tryMove(){
 
 }
 void SelectionStore::Release(){
-
+    activeSelection = NULL;
 }
 void SelectionStore::draw (Painter *painter){
-
+    if (activeSelection != NULL){
+        activeSelection->Draw(painter);
+    }
 }

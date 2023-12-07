@@ -9,7 +9,10 @@ LineSelection::LineSelection(GrObject *obj){
 
 }
 void LineSelection::Draw(Painter *pntr){
-
+    pntr->drawSelect(object->frame->x1,object->frame->y1);
+//    pntr->drawSelect(object->frame->x2,object->frame->y1);
+//    pntr->drawSelect(object->frame->x1,object->frame->y2);
+    pntr->drawSelect(object->frame->x2,object->frame->y2);
 }
 bool LineSelection::tryGrab(int x, int y){
     if (object->inBody(x,y) == true){
@@ -33,7 +36,10 @@ RectSelection::RectSelection(GrObject *obj){
     object = obj;
 }
 void RectSelection::Draw(Painter *pntr){
-
+    pntr->drawSelect(object->frame->x1,object->frame->y1);
+    pntr->drawSelect(object->frame->x1 + object->frame->x2,object->frame->y1);
+    pntr->drawSelect(object->frame->x1,object->frame->y1 + object->frame->y2);
+    pntr->drawSelect(object->frame->x1 + object->frame->x2,object->frame->y1 + object->frame->y2);
 }
 bool RectSelection::tryGrab(int x, int y){
     if (object->inBody(x,y) == true){

@@ -1,9 +1,10 @@
 #include "statecollection.h"
 
-StateCollection::StateCollection(IAction *newAction)
+StateCollection::StateCollection(IModel *model)
 {
-    dragState = new DragState(newAction);
-    createState = new CreateState(newAction);
+
+    dragState = new DragState(model);
+    createState = new CreateState(model);
     this->append(createState);
     this->append(dragState);
     nowState = crState;
@@ -29,5 +30,15 @@ void StateCollection::mouseDown(int x, int y){
     else {
         this->value(1)->MouseDown(x,y);
         nowState = crState;
+    }
+}
+void StateCollection::mouseMoove(int x, int y){
+    if (nowState == crState){
+        this->value(0)->MouseMove(x,y);
+//        nowState = drState;
+    }
+    else {
+        this->value(1)->MouseMove(x,y);
+//        nowState = crState;
     }
 }

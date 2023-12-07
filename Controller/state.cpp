@@ -1,26 +1,27 @@
 #include "state.h"
 
-State::State(IAction *newAction)
+State::State(IModel *nModel)
 {
-    action = newAction;
+    factory = nModel->getFactory();
+    dealler = nModel->getSelectionDealler();
 }
 
-DragState::DragState(IAction *newAction): State(newAction)
+DragState::DragState(IModel *model): State(model)
 {
 
 }
 
 void DragState::MouseMove (int x, int y){
-
+    dealler->tryMoove(x, y);
 }
 void DragState::MouseUp (int x, int y){
-    action->mouseUp(x, y);
+    dealler->Release();
 }
 void DragState::MouseDown (int x, int y){
 
 }
 
-CreateState::CreateState(IAction *newAction): State(newAction)
+CreateState::CreateState(IModel *model): State(model)
 {
 
 }
@@ -32,5 +33,6 @@ void CreateState::MouseUp (int x, int y){
 
 }
 void CreateState::MouseDown (int x, int y){
-    action->mouseDown(x, y);
+//    action->mouseDown(x, y);
+    factory->createAndGrabItem(x,y);
 }

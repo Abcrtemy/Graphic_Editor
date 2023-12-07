@@ -11,5 +11,6 @@ void PaintController::SetPort(QGraphicsScene *port){
 
 
 void PaintController::Refresh(){
+
     scene->repaint();
 }

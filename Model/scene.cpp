@@ -1,9 +1,10 @@
 #include "scene.h"
 #include <QDebug>
-Scene::Scene(ObjectStore *newStore, Painter *newPainter)
+Scene::Scene(ObjectStore *newStore, Painter *newPainter, ISelectionDealler *nDealler)
 {
     store = newStore;
     painter = newPainter;
+    dealler = nDealler;
 }
 
 void Scene::repaint(){
@@ -11,5 +12,6 @@ void Scene::repaint(){
         store->value(i)->draw(painter);
         qDebug() << i;
     }
+    dealler->Draw(painter);
 }
 

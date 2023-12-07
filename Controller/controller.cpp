@@ -3,8 +3,10 @@
 Controller::Controller(IModel* newModel)
 {
     model = newModel;
-    action = new Action(model);
-    stateCollection = new StateCollection(action);
+
+    stateCollection = new StateCollection(model);
+    action = new Action(model, stateCollection);
+    propdealer = new PropDealer(model->getFactory());
 }
 
 void Controller::setModel(IModel* newModel){
@@ -21,3 +23,7 @@ IAction* Controller::getAction(){
 StateCollection* Controller::getCollection(){
     return stateCollection;
 }
+void Controller::ChangeProps(int width, int index, QColor lineColor, QColor fillColor){
+    propdealer->changeProps(width,index,lineColor,fillColor);
+}
+//QColor newColor, Qt::PenStyle newStyle, int newWit

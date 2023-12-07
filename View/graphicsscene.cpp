@@ -17,7 +17,7 @@ void GraphicsScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
 }
 
     void GraphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
-    if (event->button() == Qt::LeftButton)
+//    if (event->button() == Qt::LeftButton)
 //    {
 //        //        QPointF *point = new QPointF();
 //        //        *point = event->pos();

@@ -14,6 +14,7 @@ public:
     virtual IFactory* getFactory() = 0;
     virtual IPaintController* getPaintController() = 0;
     virtual ISelectionDealler* getSelectionDealler() = 0;
+
 };
 
 

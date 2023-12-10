@@ -20,7 +20,6 @@ void Factory::createAndGrabItem(int x, int y){
 //        lineProp = lineProps;
         figure->changeProps(lineProps);
         store->append(figure);
-        selectionDealer->SelectAndGrab(figure,x,y);
     }
     else {
         Frame *frame = new Frame(x,y,0,0);
@@ -33,19 +32,10 @@ void Factory::createAndGrabItem(int x, int y){
         figure->changeProps(fillProps);
         figure->changeProps(lineProps);
         store->append(figure);
-        selectionDealer->SelectAndGrab(figure,x,y);
     }
 }
 
 
-void Factory::createItem(int x, int y){
-    selectionDealer->Release();
-\
-}
-void Factory::GrabItem(int x, int y){
-    selectionDealer->tryMoove(x,y);
-    \
-}
 void Factory::setType(CreateObjectType objectType){
     createObjectType = objectType;
 }

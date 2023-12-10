@@ -11,8 +11,9 @@
 class ISelectionDealler
 {
 public:
-    virtual void SelectAndGrab(GrObject *object, int x, int y) = 0;
+    virtual void SelectCreated( int x, int y) = 0;
     virtual void tryMoove(int x, int y) = 0;
+//    virtual void trySelect(int x, int y) = 0;
     virtual void Release() = 0;
     virtual void Draw(Painter *painter) = 0;
 };
@@ -22,8 +23,9 @@ class SelectionDealler : public ISelectionDealler
 {
 public:
     SelectionDealler(SelectionStore *store, ObjectStore *objStore);
-    void SelectAndGrab(GrObject *object, int x, int y) override;
+    void SelectCreated(int x, int y) override;
     void tryMoove(int x, int y) override;
+    void trySelect(int x, int y) override;
     void Release() override;
     virtual void Draw(Painter *painter) override;
 private:

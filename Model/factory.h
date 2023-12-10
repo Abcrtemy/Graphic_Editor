@@ -15,9 +15,7 @@ enum CreateObjectType {
 
 class IFactory{
 public:
-    virtual void createItem (int x, int y) = 0;
     virtual void createAndGrabItem (int x, int y) = 0;
-    virtual void GrabItem (int x, int y) = 0;
     virtual CreateObjectType getType() = 0;
     virtual void setType(CreateObjectType objectType) = 0;
     virtual void setLineProps(LineSetOfProps * fillP) = 0;
@@ -28,9 +26,7 @@ class Factory : public IFactory
 {
 public:
     Factory(ObjectStore *newStore, ISelectionDealler *dealer);
-    void createItem (int x, int y) override;
     void createAndGrabItem (int x, int y) override;
-    void GrabItem (int x, int y) override;
     CreateObjectType getType() override;
     void setType(CreateObjectType objectType) override;
     void setFillProps(FillSetOfProps * fillP) override;

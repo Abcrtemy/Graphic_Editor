@@ -13,6 +13,12 @@ public:
     virtual void mouseUp(int x, int y) = 0;
     virtual void mouseDown(int x, int y) = 0;
     virtual void mouseMoove(int x, int y) = 0;
+    virtual void shiftMouseUp(int x, int y) = 0;
+    virtual void esc() = 0;
+    virtual void group() = 0;
+    virtual void unGroup() = 0;
+    virtual void del() = 0;
+    virtual void startCreate() = 0;
 };
 
 class Action : public IAction
@@ -24,6 +30,12 @@ public:
     void mouseUp(int x, int y) override;
     void mouseDown(int x, int y) override;
     void mouseMoove(int x, int y) override;
+    void shiftMouseUp(int x, int y) override;
+    void esc() override;
+    void del() override;
+    void group() override;
+    void unGroup() override;
+    void startCreate() override;
 private:
     IModel *model;
     IFactory *factory;

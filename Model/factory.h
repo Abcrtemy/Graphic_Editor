@@ -20,6 +20,7 @@ public:
     virtual void setType(CreateObjectType objectType) = 0;
     virtual void setLineProps(LineSetOfProps * fillP) = 0;
     virtual void setFillProps(FillSetOfProps * lineP) = 0;
+    virtual void createGroup() = 0;
 };
 
 class Factory : public IFactory
@@ -31,6 +32,7 @@ public:
     void setType(CreateObjectType objectType) override;
     void setFillProps(FillSetOfProps * fillP) override;
     void setLineProps(LineSetOfProps * lineP) override;
+    void createGroup() override;
 private:
     CreateObjectType createObjectType;
     ObjectStore *store;

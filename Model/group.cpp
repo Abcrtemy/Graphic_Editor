@@ -3,45 +3,62 @@
 #include "frame.h"
 
 
-Group::Group(Frame *frame) : GrObject(frame)
+Group::Group(Frame *frame1) : GrObject(frame1)
 {
 //    group = new QVector<Figure*>();
-
+    frame = frame1;
     gr = new QList<GrObject*>;
 }
 
 void Group::addToGroup(GrObject* obj){
     gr->append(obj);
-
-//    if (dynamic_cast<Rectangle*>(figure)){
-//        Rectangle* rect = dynamic_cast<Rectangle*>(figure);
-//        group->push_back(rect);
-//        qDebug() << "Rect";
-//    }
-//    else{
-//        Line* line = dynamic_cast<Line*>(figure);
-//        group->push_back(line);
-//        qDebug() << "Line";
-//    }
-//    group->push_back(figure);
-//    qDebug() << "sfvsfv";
 }
 void Group::draw(Painter * painter){
-//    int l = gr->length();
+//    refactorCoordinats();
     for (int i = 0; i < gr->length(); i++){
         GrObject* object = gr->value(i);
         object->draw(painter);
-//        if (dynamic_cast<Rectangle*>(object)){
-//            Rectangle* rect = dynamic_cast<Rectangle*>(object);
-//            rect->draw(painter);
-//        }
-//        else if (dynamic_cast<Group*>(object)){
-//            Group* grope = dynamic_cast<Group*>(object);
-//            grope->draw(painter);
-//        }
-//        else{
-//            Line* line = dynamic_cast<Line*>(object);
-//            line->draw(painter);
-//        }
     }
+}
+
+bool Group::inBody(int x, int y){
+    for (int i = 0; i < gr->length(); i++){
+        if(gr->value(i)->inBody(x,y) == true){
+            return true;
+        }
+    }
+    return false;
+}
+void Group::refactorCoordinats(int a, int b){
+//    int kx1 = 0;
+//    int ky1 = 0;
+//    int kx2 = 0;
+//    int ky2 = 0;
+    for (int i = 0; i < gr->length(); i++){
+//        qDebug() << "afsdvkmosdfvnodsfnv";
+//        qDebug() << a;
+//        qDebug() << countK(gr->value(i)->frame->x1, frame->x1, frame->x2);
+        gr->value(i)->frame->x1 = gr->value(i)->frame->x1 + countK(gr->value(i)->frame->x1, frame->x1, frame->x2)*a;
+        gr->value(i)->frame->x2 = gr->value(i)->frame->x2 + countK(gr->value(i)->frame->x2, frame->x1, frame->x2)*a;
+        gr->value(i)->frame->y1 = gr->value(i)->frame->y1 + countK(gr->value(i)->frame->y1, frame->y1, frame->y2)*b;
+        gr->value(i)->frame->y2 = gr->value(i)->frame->y2 + countK(gr->value(i)->frame->y2, frame->y1, frame->y2)*b;
+//        gr->value(i)->frame->x1 = (gr->value(i)->frame->x1 - frame->x1) * ((frame->x2-frame->x1)/(frame->x2+a-frame->x1)) +  frame->x1;
+// Новая координата X = (Старая координата X - Старая координата верхнего левого угла общей рамки) * (Новая ширина общей рамки / Старая ширина общей рамки) + Новая координата верхнего левого угла общей рамки
+
+
+//        gr->value(i)->frame->x1 = gr->value(i)->frame->x1 + a;
+//        gr->value(i)->frame->x2 = gr->value(i)->frame->x2 + a;
+//        gr->value(i)->frame->y1 = gr->value(i)->frame->y1 + b;
+//        gr->value(i)->frame->y2 = gr->value(i)->frame->y2 + b;
+    }
+    frame->x2 = frame->x2 + a;
+    frame->y2 = frame->y2 + b;
+}
+float  Group::countK(int x, int min, int max){
+//    qDebug() << x;
+//    qDebug() << min;
+//    qDebug() << max;
+//    qDebug() << "координаты";
+
+    return (x - min) / float(max - min);
 }

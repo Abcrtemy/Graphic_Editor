@@ -2,6 +2,7 @@
 #include <QColor>
 
 #include "math.h"
+#include "group.h"
 #include <cmath>
 
 Factory::Factory(ObjectStore *newStore, ISelectionDealler *dealer)
@@ -16,25 +17,23 @@ void Factory::createAndGrabItem(int x, int y){
     if (createObjectType == LineType){
         Frame *frame = new Frame(x,y,x,y);
         Figure *figure = new Line(frame, propList);
-//        SetOfProps *lineProp = new LineSetOfProps(Qt::blue, Qt::DotLine, 3);
-//        lineProp = lineProps;
         figure->changeProps(lineProps);
         store->append(figure);
     }
     else {
         Frame *frame = new Frame(x,y,0,0);
         Figure* figure = new Rectangle(frame, propList);
-//        SetOfProps *lineProp = new LineSetOfProps(Qt::green, Qt::DashLine, 3);
-//        SetOfProps *lineProp = new LineSetOfProps(Qt::blue, Qt::DotLine, 3);
-//        lineProp = lineProps;
-//        SetOfProps *fillProp = new FillSetOfProps(Qt::blue);
-//        fillProp = *fillProps;
         figure->changeProps(fillProps);
         figure->changeProps(lineProps);
         store->append(figure);
     }
 }
 
+void Factory::createGroup(){
+    Frame *frame = new Frame(0,0,0,0);
+    GrObject *group = new Group(frame);
+    store->append(group);
+}
 
 void Factory::setType(CreateObjectType objectType){
     createObjectType = objectType;
@@ -53,5 +52,5 @@ void Factory::setFillProps(FillSetOfProps* fprops){
 }
 void Factory::setLineProps(LineSetOfProps* lprops){
     lineProps = lprops;
-
 }
+

@@ -2,7 +2,7 @@
 
 SelectionStore::SelectionStore()
 {
-
+    list = new QList<GrObject*>;
 }
 
 void SelectionStore::tryGrab(int x, int y){
@@ -11,18 +11,23 @@ void SelectionStore::tryGrab(int x, int y){
             activeSelection = this->value(b);
         }
     }
-//    int b = this->count() - 1;
-//    this->value(b);
-//    activeSelection = this->value(b);
 }
 bool SelectionStore::tryMove(){
 
 }
+
 void SelectionStore::Release(){
+    this->clear();
     activeSelection = NULL;
 }
 void SelectionStore::draw (Painter *painter){
-    if (activeSelection != NULL){
-        activeSelection->Draw(painter);
+    if (this->length() != 0){
+        for (int i = 0; i < this->length(); i++ ){
+            this->value(i)->Draw(painter);
+        }
     }
+}
+
+QList<GrObject*> *SelectionStore::getObjList() {
+    return list;
 }

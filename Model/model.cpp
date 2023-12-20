@@ -6,7 +6,8 @@ Model::Model()
 
     objectStore = new ObjectStore;
     selectionStore = new SelectionStore();
-    selectionDealler = new SelectionDealler(selectionStore, objectStore);
+    grDealler = new GroupDealler(objectStore, selectionStore);
+    selectionDealler = new SelectionDealler(selectionStore, objectStore, grDealler);
 
     factory = new Factory(objectStore, selectionDealler);
     painter = new Painter();

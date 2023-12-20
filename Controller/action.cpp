@@ -5,7 +5,6 @@ Action::Action(IModel *newModel, StateCollection *state)
     model = newModel;
     factory = model->getFactory();
     collection = state;
-//    dealer = model->getSelectionDealler();
 }
 
 
@@ -14,24 +13,36 @@ void Action::setCreateObjectType(CreateObjectType objectType){
 }
 
 void Action::mouseUp(int x, int y){
-//    factory = model->getFactory();
-//    factory->createItem(x,y);
     collection->mouseUp(x,y);
 
 }
 void Action::mouseDown(int x, int y){
-    //    factory = model->getFactory();
-//    factory->createAndGrabItem(x,y);
     collection->mouseDown(x,y);
-
-//    dealer->SelectAndGrab();
 }
 
 void Action::mouseMoove(int x, int y){
-    //    factory = model->getFactory();
-//    factory->GrabItem(x,y);
     collection->mouseMoove(x,y);
-    //    dealer->SelectAndGrab();
+}
+
+
+void Action::startCreate(){
+    collection->startCreate();
+}
+
+void Action::shiftMouseUp(int x, int y){
+    collection->shiftMouseUp(x, y);
+}
+void Action::esc(){
+    collection->esc();
+}
+void Action::del(){
+    collection->del();
+}
+void Action::group(){
+    collection->group();
+}
+void Action::unGroup(){
+    collection->unGroup();
 }
 
 CreateObjectType Action::getCreatedObjectType(){

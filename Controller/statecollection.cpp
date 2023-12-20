@@ -5,58 +5,66 @@
 
 StateCollection::StateCollection(IModel *model)
 {
-
     dragState = new DragState(model);
     createState = new CreateState(model);
+    emptyState = new EmptyState(model);
+    multiState = new MultiState(model);
+    singleState = new SingleState(model);
     this->append(createState);
     this->append(dragState);
-    nowState = createState;
-//    connect(dragState, SIGNAL(changeToCreate), this, SLOT(StateCollection::changetoCreate));
-//    connect(createState, SIGNAL(CreateState::changeToDrag), this, SLOT(StateCollection::changeToDrag));
+    this->append(emptyState);
+    this->append(multiState);
+    this->append(singleState);
+    nowState = emptyState;
 }
 
 void StateCollection::mouseUp(int x, int y){
-//    if (nowState == crState){
-//        this->value(0)->MouseUp(x,y);
-//        nowState = drState;
-//    }
-//    else {
-//        this->value(1)->MouseUp(x,y);
-//        nowState = crState;
-//    }
-    //    void (*callBack)() = &StateCollection::changeToDrag;
-    std::function<void()> callBack = [this](){ changetoCreate(); };
-
-//    std::function<void()> callBack = std::bind(&StateCollection::changetoCreate(), this);
-//    std::function<void()> callback = [this]() { this->changeToDrag();};
-    nowState->MouseUp(x, y, callBack);
+    std::function<void()> drag = [this](){ changeToDrag(); };
+    std::function<void()> empty = [this](){ changeToEmpty(); };
+    std::function<void()> single = [this](){ changeToSingle(); };
+    nowState->MouseUp(x, y, drag, empty, single);
 
 }
 
 void StateCollection::mouseDown(int x, int y){
-//    if (nowState == crState){
-//        this->value(0)->MouseDown(x,y);
-//        nowState = drState;
-//    }
-//    else {
-//        this->value(1)->MouseDown(x,y);
-//        nowState = crState;
-//    }
-//    std::function<void()> callBack = std::bind(&StateCollection::changeToDrag(), this);
-//    nowState->MouseUp(x, y, callBack);
-    std::function<void()> callBack = [this](){ changeToDrag(); };
-    nowState->MouseDown(x, y,callBack);
+    std::function<void()> drag = [this](){ changeToDrag(); };
+//    std::function<void()> empty = [this](){ changeToDrag(); };
+    nowState->MouseDown(x, y,drag);
 }
 void StateCollection::mouseMoove(int x, int y){
-//    if (nowState == crState){
-//        this->value(0)->MouseMove(x,y);
-////        nowState = drState;
-//    }
-//    else {
-//        this->value(1)->MouseMove(x,y);
-////        nowState = crState;
-//    }
+
     nowState->MouseMove(x, y);
+}
+
+void StateCollection::shiftMouseUp(int x, int y){
+    std::function<void()> multi = [this](){ changeToMulti(); };
+    nowState->ShiftMouseUp(x, y, multi);
+}
+
+void StateCollection::esc(){
+    std::function<void()> empty = [this](){ changeToEmpty(); };
+    nowState->esc(empty);
+}
+
+void StateCollection::del(){
+    std::function<void()> empty = [this](){ changeToEmpty(); };
+    nowState->del(empty);
+}
+
+void StateCollection::startCreate(){
+    changetoCreate();
+}
+
+void StateCollection::group(){
+    std::function<void()> single = [this](){ changeToSingle(); };
+    nowState->group(single);
+//    changetoCreate();
+}
+
+void StateCollection::unGroup(){
+//    changetoCreate();
+    std::function<void()> multi = [this](){ changeToMulti(); };
+    nowState->unGroup(multi);
 }
 
 
@@ -66,25 +74,13 @@ void StateCollection::changetoCreate(){
 void StateCollection::changeToDrag(){
     nowState = dragState;
 }
-
-//class MyClass {
-//public:
-//    void callbackMethod(int result) {
-////        std::cout << "Результат: " << result << std::endl;
-//    }
-//};
-
-//typedef void (MyClass::*CallbackMethod)(int);
-
-//void performCallback(CallbackMethod callback, MyClass* obj) {
-//    int result = 10;
-//    (obj->*callback)(result);
-//}
-
-//int main() {
-//    MyClass obj;
-//    CallbackMethod cb = &MyClass::callbackMethod;
-//    performCallback(cb, &obj);
-//    return 0;
-//}
+void StateCollection::changeToEmpty(){
+    nowState = emptyState;
+}
+void StateCollection::changeToSingle(){
+    nowState = singleState;
+}
+void StateCollection::changeToMulti(){
+    nowState = multiState;
+}
 

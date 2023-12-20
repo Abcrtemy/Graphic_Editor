@@ -18,13 +18,24 @@ public:
     void mouseUp(int x, int y);
     void mouseDown(int x, int y);
     void mouseMoove(int x, int y);
-//public slots:
-    void changetoCreate();
-    void changeToDrag();
+    void shiftMouseUp(int x, int y);
+    void esc();
+    void del();
+    void group();
+    void unGroup();
+    void startCreate();
 private:
     State *dragState;
     State *createState;
+    State *emptyState;
+    State *multiState;
+    State *singleState;
     State *nowState;
+    void changetoCreate();
+    void changeToDrag();
+    void changeToEmpty();
+    void changeToSingle();
+    void changeToMulti();
 };
 
 #endif // STATECOLLECTION_H

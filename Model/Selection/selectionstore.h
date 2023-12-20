@@ -16,6 +16,9 @@ public:
     bool tryMove();
     void Release();
     void draw (Painter *painter);
+    QList<GrObject*> *getObjList();
+private:
+    QList<GrObject*> *list;
 };
 
 #endif // SELECTIONSTORE_H

@@ -2,40 +2,40 @@
 
 GraphicsScene::GraphicsScene()
 {
-//    this->mouseReleaseEvent()
+
 }
 
 void GraphicsScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     if (event->button() == Qt::LeftButton)
     {
-    //        QPointF *point = new QPointF();
-    //        *point = event->pos();
-    //        int x = point->x();
-    //        int y = point->y();
+//        if (event->modifiers()   )
+        if ( event->modifiers() == Qt::ShiftModifier)
+        {
+            emit ShiftMsUp(event->scenePos().x(), event->scenePos().y());
+            return;
+        }
         emit leftButtonReleased(event->scenePos().x(), event->scenePos().y());
     }
 }
-
-    void GraphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
-//    if (event->button() == Qt::LeftButton)
-//    {
-//        //        QPointF *point = new QPointF();
-//        //        *point = event->pos();
-//        //        int x = point->x();
-//        //        int y = point->y();
-
-//    }
+void GraphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
     emit MsMoved(event->scenePos().x(), event->scenePos().y());
 }
 
-    void GraphicsScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
+void GraphicsScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     if (event->button() == Qt::LeftButton)
     {
-        //        QPointF *point = new QPointF();
-        //        *point = event->pos();
-        //        int x = point->x();
-        //        int y = point->y();
         emit leftButtonPressed(event->scenePos().x(), event->scenePos().y());
+    }
+}
+
+void GraphicsScene::keyPressEvent(QKeyEvent *event){
+    if (event->key() == Qt::Key_X)
+    {
+        emit Del();
+    }
+    if (event->key() == Qt::Key_Escape)
+    {
+        emit ESC();
     }
 
 }

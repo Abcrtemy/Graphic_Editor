@@ -16,11 +16,12 @@ class PaintController : public IPaintController
 {
 public:
     PaintController(Scene *newScene, Painter *painter);
-    void SetPort(QGraphicsScene *port) override;
+    void SetPort(QGraphicsScene *nport) override;
     void Refresh() override;
 private:
     Scene *scene;
     Painter *painter;
+    QGraphicsScene *port;
 };
 
 #endif // PAINTCONTROLLER_H

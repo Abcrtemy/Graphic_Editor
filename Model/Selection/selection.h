@@ -11,7 +11,7 @@ public:
     virtual bool tryGrab(int x, int y) = 0;
     virtual bool tryMove(int x, int y) = 0;
     virtual void Release() = 0;
-protected:
+//protected:
     GrObject *object;
 };
 
@@ -38,4 +38,14 @@ public:
     void Release() override;
 };
 
+
+class GroupSelection : public Selection
+{
+public:
+    GroupSelection(GrObject *obj);
+    void Draw(Painter *pntr) override;
+    bool tryGrab(int x, int y) override;
+    bool tryMove(int x, int y) override;
+    void Release() override;
+};
 #endif // SELECTION_H

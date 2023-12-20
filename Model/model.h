@@ -8,6 +8,7 @@
 #include "paintcontroller.h"
 #include "Selection/selectiondealler.h"
 #include "Selection/selectionstore.h"
+#include "groupdealler.h"
 
 class IModel{
 public:
@@ -35,6 +36,7 @@ private:
     ISelectionDealler *selectionDealler;
     SelectionStore *selectionStore;
     Painter *painter;
+    GroupDealler *grDealler;
 
 };
 

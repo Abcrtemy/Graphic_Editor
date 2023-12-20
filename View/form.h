@@ -39,6 +39,9 @@ private slots:
     void onLeftButtonPressed(int x, int y);
     void LeftButtonReleased(int x, int y);
     void mouseMoove(int x, int y);
+    void shiftMouseUp(int x, int y);
+    void Esc();
+    void Del();
 
     void on_ChangeType_currentIndexChanged(int index);
 
@@ -47,6 +50,10 @@ private slots:
     void on_LineColor_clicked();
 
     void on_FillColor_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
 
 private:
     Ui::Form *ui;

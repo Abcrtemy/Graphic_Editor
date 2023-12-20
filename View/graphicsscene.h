@@ -3,6 +3,7 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
+#include <QKeyEvent>
 
 
 class GraphicsScene : public QGraphicsScene
@@ -13,12 +14,15 @@ public:
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;
+//    void esEvent(QGraphicsSceneMouseEvent *event) override;
 signals:
     void leftButtonPressed(int x, int y);
     void leftButtonReleased(int x, int y);
     void MsMoved(int x, int y);
-//    void leftButton(int x, int y);
-//    void leftButtonPressed(int x, int y);
+    void ShiftMsUp(int x, int y);
+    void Del();
+    void ESC();
 protected:
 
 

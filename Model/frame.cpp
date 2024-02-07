@@ -6,5 +6,9 @@ Frame::Frame(int x_1, int y_1, int x_2, int y_2)
     y1 = y_1;
     x2 = x_2;
     y2 = y_2;
+    kx1 = 0;
+    kx2 = 0;
+    ky1 = 0;
+    ky2 = 0;
 
 }

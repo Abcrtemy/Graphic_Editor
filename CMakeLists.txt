@@ -47,6 +47,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Model/propdealer.h Model/propdealer.cpp
         Model/Selection/selection.h Model/Selection/selection.cpp
         Model/groupdealler.h Model/groupdealler.cpp
+        Model/Change/change.h Model/Change/change.cpp
+        Model/Change/changestore.h Model/Change/changestore.cpp
+        Model/Change/changedealler.h Model/Change/changedealler.cpp
 #        Model/selectiondealler.h Model/selectiondealler.cpp
 
 

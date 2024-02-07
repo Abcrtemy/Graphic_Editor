@@ -24,6 +24,8 @@ public:
     void group();
     void unGroup();
     void startCreate();
+    void undo();
+    void redo();
 private:
     State *dragState;
     State *createState;

@@ -6,6 +6,7 @@
 #include "../Model/Selection/selectiondealler.h"
 #include <QObject>
 #include <iostream>
+#include "../Model/Change/changedealler.h"
 
 
 class State
@@ -21,9 +22,12 @@ public:
     virtual void del(std::function<void()> empty) = 0;
     virtual void group(std::function<void()> single) = 0;
     virtual void unGroup(std::function<void()> multi) = 0;
+    virtual void undo(std::function<void()> empty) = 0;
+    virtual void redo(std::function<void()> empty) = 0;
 protected:
     IFactory *factory;
     ISelectionDealler *dealler;
+    ChangeDealler *changeDealler;
 };
 
 
@@ -40,6 +44,8 @@ public:
     void del(std::function<void()> empty) override;
     void group(std::function<void()> single) override;
     void unGroup(std::function<void()> multi) override;
+    void undo(std::function<void()> empty) override;
+    void redo(std::function<void()> empty) override;
 };
 
 class CreateState : public State
@@ -54,6 +60,8 @@ public:
     void del(std::function<void()> empty) override;
     void group(std::function<void()> single) override;
     void unGroup(std::function<void()> multi) override;
+    void undo(std::function<void()> empty) override;
+    void redo(std::function<void()> empty) override;
 };
 
 class EmptyState : public State
@@ -68,6 +76,8 @@ public:
     void del(std::function<void()> empty) override;
     void group(std::function<void()> single) override;
     void unGroup(std::function<void()> multi) override;
+    void undo(std::function<void()> empty) override;
+    void redo(std::function<void()> empty) override;
 
 };
 class SingleState : public State
@@ -82,6 +92,9 @@ public:
     void del(std::function<void()> empty) override;
     void group(std::function<void()> single) override;
     void unGroup(std::function<void()> multi) override;
+    void undo(std::function<void()> empty) override;
+    void redo(std::function<void()> empty) override;
+    int amountOfMoovments = 0;
 };
 class MultiState : public State
 {
@@ -95,5 +108,7 @@ public:
     void del(std::function<void()> empty) override;
     void group(std::function<void()> single) override;
     void unGroup(std::function<void()> multi) override;
+    void undo(std::function<void()> empty) override;
+    void redo(std::function<void()> empty) override;
 };
 #endif // STATE_H

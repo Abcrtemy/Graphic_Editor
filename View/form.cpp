@@ -137,3 +137,21 @@ void Form::on_pushButton_4_clicked()
     paintController->Refresh();
 }
 
+
+void Form::on_pushButton_6_clicked()
+{
+    //Вперед
+    scene->clear();
+    action->redo();
+    paintController->Refresh();
+}
+
+
+void Form::on_pushButton_5_clicked()
+{
+    //Назад
+    scene->clear();
+    action->undo();
+    paintController->Refresh();
+}
+

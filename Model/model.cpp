@@ -7,7 +7,9 @@ Model::Model()
     objectStore = new ObjectStore;
     selectionStore = new SelectionStore();
     grDealler = new GroupDealler(objectStore, selectionStore);
-    selectionDealler = new SelectionDealler(selectionStore, objectStore, grDealler);
+    changeStore = new ChangeStore();
+    changeDealler = new ChangeDealler(changeStore, objectStore, grDealler);
+    selectionDealler = new SelectionDealler(selectionStore, objectStore, grDealler, changeDealler);
 
     factory = new Factory(objectStore, selectionDealler);
     painter = new Painter();
@@ -27,6 +29,10 @@ Model::Model()
 
 IFactory* Model::getFactory(){
     return factory;
+}
+
+ChangeDealler* Model::getChangeDealler(){
+    return changeDealler;
 }
 
 ISelectionDealler* Model::getSelectionDealler(){

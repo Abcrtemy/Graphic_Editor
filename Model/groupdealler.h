@@ -11,11 +11,14 @@ class GroupDealler
 public:
     GroupDealler(ObjectStore *objectStore, SelectionStore *selectionStore);
     void group(QList<GrObject*> *list);
-    void unGroup();
+//    QList<GrObject*> * unGroup();
+    void unGroup(Group *group);
+
 private:
     ObjectStore *objStore;
     SelectionStore *selStore;
     Group *groupe;
+    QList<GrObject*> *list;
 };
 
 #endif // GROUPDEALLER_H

@@ -67,6 +67,16 @@ void StateCollection::unGroup(){
     nowState->unGroup(multi);
 }
 
+void StateCollection::undo(){
+    std::function<void()> empty = [this](){ changeToEmpty(); };
+    nowState->undo(empty);
+}
+
+void StateCollection::redo(){
+    std::function<void()> empty = [this](){ changeToEmpty(); };
+    nowState->redo(empty);
+}
+
 
 void StateCollection::changetoCreate(){
     nowState = createState;

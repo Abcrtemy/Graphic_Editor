@@ -19,6 +19,8 @@ public:
     virtual void unGroup() = 0;
     virtual void del() = 0;
     virtual void startCreate() = 0;
+    virtual void undo () = 0;
+    virtual void redo () = 0;
 };
 
 class Action : public IAction
@@ -36,6 +38,8 @@ public:
     void group() override;
     void unGroup() override;
     void startCreate() override;
+    void undo () override;
+    void redo () override;
 private:
     IModel *model;
     IFactory *factory;

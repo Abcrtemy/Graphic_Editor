@@ -15,7 +15,13 @@ void SelectionStore::tryGrab(int x, int y){
 bool SelectionStore::tryMove(){
 
 }
-
+void SelectionStore::mooveFigure(int x, int y){
+//    int a = 10;
+//    int b = 10;
+    for(int i = this->count()-1; i>=0; i--){
+        this->value(i)->mooveFigure(x, y);
+    }
+}
 void SelectionStore::Release(){
     this->clear();
     activeSelection = NULL;

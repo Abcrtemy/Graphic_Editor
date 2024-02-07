@@ -45,6 +45,13 @@ void Action::unGroup(){
     collection->unGroup();
 }
 
+void Action::undo(){
+    collection->undo();
+}
+void Action::redo(){
+    collection->redo();
+}
+
 CreateObjectType Action::getCreatedObjectType(){
     return factory->getType();
 }

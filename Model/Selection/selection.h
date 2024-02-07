@@ -10,9 +10,14 @@ public:
     virtual void Draw(Painter *pntr) = 0;
     virtual bool tryGrab(int x, int y) = 0;
     virtual bool tryMove(int x, int y) = 0;
+    virtual void mooveFigure(int x, int y) = 0;
     virtual void Release() = 0;
-//protected:
     GrObject *object;
+protected:
+    int xToGrab = 0;
+    int yToGrab = 0;
+//protected:
+
 };
 
 
@@ -24,6 +29,7 @@ public:
     void Draw(Painter *pntr) override;
     bool tryGrab(int x, int y) override;
     bool tryMove(int x, int y) override;
+    void mooveFigure(int x, int y) override;
     void Release() override;
 };
 
@@ -35,6 +41,7 @@ public:
     void Draw(Painter *pntr) override;
     bool tryGrab(int x, int y) override;
     bool tryMove(int x, int y) override;
+    void mooveFigure(int x, int y) override;
     void Release() override;
 };
 
@@ -46,6 +53,7 @@ public:
     void Draw(Painter *pntr) override;
     bool tryGrab(int x, int y) override;
     bool tryMove(int x, int y) override;
+    void mooveFigure(int x, int y) override;
     void Release() override;
 };
 #endif // SELECTION_H

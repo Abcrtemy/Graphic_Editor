@@ -55,6 +55,15 @@ void Painter::drawLine(int x1, int y1, int x2, int y2){
 void Painter::drawRectangle(int x1, int y1, int x2, int y2){
 //    QPen penBlack(Qt::black);
 //    qDebug() << brush.color();
+    if(y2< 0){
+        y1 = y1 + y2;
+        y2 = y2*(-1);
+    }
+    if (x2 < 0){
+        x1 = x1 + x2;
+        x2 = x2*(-1);
+    }
+
     scene->addRect(x1, y1, x2, y2, pen,brush);
 
 }

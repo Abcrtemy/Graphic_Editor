@@ -15,6 +15,7 @@ public:
     void tryGrab(int x, int y);
     bool tryMove();
     void Release();
+    void mooveFigure(int x, int y);
     void draw (Painter *painter);
     QList<GrObject*> *getObjList();
 private:
